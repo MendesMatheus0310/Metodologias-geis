@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Metodologias Ágeis — Edição Dark</title>
+  <meta name="description" content="A pesquisa definitiva sobre metodologias ágeis em uma interface futurista com modo escuro permanente." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg: #050b18; --bg-2: #071328; --card: #0b1e3a; --card-2: #0a1a31;
+      --accent: #2ea3ff; --accent-2: #4cc2ff;
+      --text: #e8f1ff; --muted: #a6c8ff;
+      --glow-rgb: 78,180,255; --accent-rgb: 46,163,255;
+      --shadow-color: rgba(0,0,0,.35);
+      --bg-layer-opacity: 1;
+      --glow: 0 0 24px rgba(var(--glow-rgb),.35), 0 0 64px rgba(var(--accent-rgb),.2);
+      --radius: 16px;
+      --shadow: 0 10px 30px var(--shadow-color);
+      --grid-gap: clamp(16px, 3vw, 28px);
+      --transition: .4s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    *{box-sizing:border-box}
+    ::selection{ background: rgba(var(--accent-rgb), .2); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-2); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+    html,body{height:100%}
+    html{scroll-behavior: smooth;}
+    body{
+      margin:0;
+      background-color: var(--bg);
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .bg-layer{
+      position:fixed; inset:0; pointer-events:none; z-index:-1;
+      background-image: repeating-linear-gradient(to bottom, rgba(120,120,120,.05) 0 1px, transparent 1px 3px);
+      mix-blend-mode: soft-light;
+      opacity: var(--bg-layer-opacity);
+    }
+    canvas#constellation{
+      position:fixed; inset:0; z-index:-2;
+    }
+
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(5,11,24,.85), rgba(5,11,24,.6));
+      border-bottom:1px solid rgba(var(--accent-rgb),.18);
+      transform: translateY(-100%);
+      animation: slide-down .6s .5s forwards cubic-bezier(.2, .8, .2, 1);
+    }
+    @keyframes slide-down { to { transform: translateY(0); } }
+
+    .nav{
+      max-width:1200px; margin:auto; display:flex; align-items:center; gap:16px;
+      padding:14px clamp(14px, 4vw, 28px);
+    }
+    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
+    .logo{
+      width:38px; height:38px; border-radius:10px; background:
+        radial-gradient(circle at 30% 30%, var(--accent-2), transparent 60%),
+        linear-gradient(135deg, var(--card-2), var(--card));
+      box-shadow: var(--glow); position:relative; overflow:hidden;
+    }
+    .logo::after{
+      content:""; position:absolute; inset:-30% -30% auto auto; width:120%; height:120%;
+      background: conic-gradient(from 0deg, transparent 0 80%, rgba(var(--accent-rgb),.25) 80% 100%);
+      animation: spin 8s linear infinite; mix-blend-mode: screen;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .brand .title{
+      font-family: Orbitron, Inter, sans-serif; letter-spacing:.5px; font-weight:800; font-size: clamp(16px, 2.2vw, 20px);
+    }
+    .nav ul{
+      margin:0 0 0 auto; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px 14px;
+    }
+    .nav a{
+      position: relative;
+      color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; transition:.25s;
+      border:1px solid transparent;
+    }
+    .nav a:hover{ color:var(--text); border-color: rgba(var(--accent-rgb),.25); background: var(--bg-2); box-shadow: var(--glow); }
+    .nav a.active { color: var(--accent-2); text-shadow: 0 0 8px rgba(var(--accent-rgb), .5); }
+    .nav a.active::after{
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: var(--glow);
+    }
+
+    .hero{
+      position:relative; overflow:hidden;
+      padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 32px);
+    }
+    .hero-inner{
+      max-width:1200px; margin:auto; display:grid; grid-template-columns: 1fr .85fr; align-items: center; gap: clamp(20px, 5vw, 48px);
+    }
+    .hero-content { animation: fade-up .6s .8s forwards; opacity: 0; transform: translateY(10px); }
+    @keyframes fade-up { to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 900px){ .hero-inner{grid-template-columns: 1fr} .tag-canvas-container { max-width: 400px; margin: auto; aspect-ratio: 1; }}
+
+    .kicker{ color: var(--accent-2); font-weight:700; text-transform: uppercase; letter-spacing: .2em; font-size:12px; }
+    h1{
+      margin:8px 0 12px; font-family: Orbitron, Inter, sans-serif; font-size: clamp(28px, 6vw, 56px);
+      line-height:1.05; text-shadow: 0 2px 20px rgba(var(--accent-rgb),.35);
+      background: linear-gradient(90deg, var(--text), var(--muted));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-wrap: balance;
+    }
+    .sub{ color:var(--muted); max-width:60ch; }
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:18px }
+    .btn{
+      appearance:none; border:none; cursor:pointer; text-decoration:none; color:var(--text); font-weight:700;
+      padding:12px 18px; border-radius:12px; transition:var(--transition); position:relative; overflow:hidden;
+    }
+    .btn.primary{
+      color: #fff;
+      background: linear-gradient(180deg, var(--accent-2), var(--accent));
+      box-shadow: var(--glow), inset 0 -6px 12px rgba(0,0,0,.25);
+    }
+    .btn.primary:hover{ transform: translateY(-2px) scale(1.02); filter: brightness(1.1) saturate(1.1); }
+    .btn.ghost{ background: var(--card); border:1px solid rgba(var(--accent-rgb),.3) }
+
+    .stats{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:24px; max-width:720px; }
+    @media (max-width:700px){ .stats{grid-template-columns: 1fr 1fr} }
+    .stat{
+      padding:14px; border-radius:12px; background: linear-gradient(180deg, var(--card), var(--card-2));
+      border:1px solid rgba(var(--accent-rgb),.18); box-shadow: var(--shadow);
+    }
+    .stat strong{ font-family: Orbitron, Inter, sans-serif; font-size: clamp(18px, 4vw, 28px); display:block; color: var(--accent-2); }
+    .stat span{ color:var(--muted); font-size:12px }
+
+    main{ padding: 0 clamp(16px, 5vw, 32px) 80px }
+    .section{ max-width:1200px; margin: clamp(30px, 6vw, 60px) auto; position:relative; }
+
+    .grid{ display:grid; gap: var(--grid-gap); grid-template-columns: repeat(12, 1fr); }
+    .card{
+      --mouse-x: 50%; --mouse-y: 50%;
+      grid-column: span 12;
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border:1px solid rgba(var(--accent-rgb),.2);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      overflow:hidden; position:relative;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s;
+      isolation:isolate;
+    }
+    .card:hover{ transform: translateY(-3px); box-shadow: var(--glow), var(--shadow); border-color: rgba(var(--accent-rgb),.35) }
+    .card::before{
+      content:""; position:absolute; inset:-1px; border-radius: calc(var(--radius) + 1px);
+      padding:1px; background: linear-gradient(135deg, rgba(var(--accent-rgb),.6), rgba(var(--accent-rgb),.2), rgba(var(--accent-rgb),.6));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude; opacity:.25; pointer-events:none;
+    }
+    .card::after {
+      content: ''; position: absolute; inset: 0; z-index: -1; border-radius: var(--radius);
+      background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(var(--accent-rgb), .1), transparent 40%);
+      opacity: 0; transition: opacity .4s ease;
+    }
+    .card:hover::after { opacity: 1; }
+
+    .card .inner{ padding: clamp(16px, 3.5vw, 28px); display:grid; gap:12px }
+    .card h2{
+      font-family: Orbitron, Inter, sans-serif; margin:0 0 4px; font-size: clamp(22px, 4.5vw, 32px); text-wrap: balance;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px; font-size:12px; color:var(--muted);
+      background: rgba(var(--accent-rgb),.12); border:1px solid rgba(var(--accent-rgb),.25); border-radius:999px; padding:6px 10px;
+    }
+    .meta{ display:flex; flex-wrap:wrap; gap:8px 12px; margin-top:6px; color:var(--muted); }
+    .pill{
+      font-size:12px; padding:6px 10px; border-radius:999px; background: var(--bg-2);
+      border:1px solid rgba(var(--accent-rgb),.2)
+    }
+    .columns{ display:grid; gap:16px; grid-template-columns: 1fr 1fr }
+    @media (max-width: 800px){ .columns{grid-template-columns: 1fr} }
+    .list{ margin:0; padding-left:18px; }
+    .list li{ margin:6px 0 }
+    .muted{ color: var(--muted) }
+    .list li::marker { color: var(--accent); }
+
+    .timeline{ display:grid; gap:16px; position:relative; padding-left:16px; }
+    .timeline::before{
+      content:""; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background: linear-gradient(180deg, rgba(var(--accent-rgb),.6), rgba(var(--accent-rgb),.1));
+      box-shadow: var(--glow);
+    }
+    .time-item{ position:relative; padding-left:18px; }
+    .time-item::before{
+      content:""; position:absolute; left:-2px; top:.5em; width:12px; height:12px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb),.2), var(--glow);
+    }
+
+    footer{
+      margin-top:60px; padding:28px clamp(16px, 5vw, 32px);
+      background: var(--bg-2);
+      border-top:1px solid rgba(var(--accent-rgb),.18);
+      color: var(--muted); text-align: center;
+    }
+
+    .dock{
+      position: fixed; right: 12px; bottom: 12px; z-index: 40;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .dock button{
+      width:48px; height:48px; border-radius:14px; border:1px solid rgba(var(--accent-rgb),.3); background: rgba(10,26,49,.7);
+      color:var(--text); cursor:pointer; display:grid; place-items:center; box-shadow: var(--shadow);
+      transition:var(--transition); backdrop-filter: blur(4px); position: relative;
+    }
+    .dock button:hover{ transform: translateY(-2px) scale(1.05); box-shadow: var(--glow), var(--shadow) }
+    #toTop svg { transition: var(--transition); }
+    #progress-ring { stroke: var(--accent); transition: stroke-dashoffset .3s ease-out; }
+
+    .table{
+      width:100%; border-collapse: collapse; margin-top:6px; overflow:hidden; border-radius:12px; border:1px solid rgba(var(--accent-rgb),.2)
+    }
+    .table th, .table td{
+      padding:12px; text-align:left; border-bottom:1px solid rgba(var(--accent-rgb),.12);
+    }
+    .table th{ color:var(--muted); font-weight:600; background: var(--bg-2) }
+    .table tr:hover td{ background: rgba(var(--accent-rgb),.06) }
+
+    .divider{ height:1px; background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb),.5), transparent); margin:12px 0; }
+    .code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 12px; background: var(--bg-2); border:1px solid rgba(var(--accent-rgb),.25);
+      padding:10px 12px; border-radius:10px; color:var(--muted);
+    }
+    .reveal{ opacity:0; transform: translateY(12px); }
+    .reveal.show{ opacity:1; transform:none; transition: .7s cubic-bezier(.2,.7,.2,1) }
+  </style>
+</head>
+<body>
+  <canvas id="constellation"></canvas>
+  <div class="bg-layer"></div>
+
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#top"><div class="logo" aria-hidden="true"></div><span class="title">TBL — Metodologias Ágeis</span></a>
+      <ul>
+        <li><a href="#xp">XP</a></li><li><a href="#fdd">FDD</a></li><li><a href="#kanban">Kanban</a></li><li><a href="#crystal">Crystal</a></li><li><a href="#msf">MSF</a></li><li><a href="#comparacao">Comparação</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="kicker">Aprendizagem Baseada em Equipe</div>
+        <h1>Explorando Metodologias Ágeis</h1>
+        <p class="sub">Uma pesquisa imersiva e interativa sobre XP, FDD, Kanban, Crystal e MSF, analisando seus processos, pessoas, vantagens e desvantagens.</p>
+        <div class="cta-row"><a href="#xp" class="btn primary">Iniciar Exploração</a><a href="#comparacao" class="btn ghost">Comparação Rápida</a></div>
+        <div class="stats"><div class="stat"><strong>5</strong><span>Metodologias</span></div><div class="stat"><strong>4</strong><span>Dimensões</span></div><div class="stat"><strong>1</strong><span>Interface</span></div></div>
+      </div>
+      <div class="tag-canvas-container">
+        <canvas width="500" height="500" id="tagCanvas"><p>Seu navegador não suporta a tag canvas.</p></canvas>
+        <div id="tags" style="display:none;">
+          <ul><li><a href="#xp">XP</a></li><li><a href="#">TDD</a></li><li><a href="#">Pair Programming</a></li><li><a href="#fdd">FDD</a></li><li><a href="#">Features</a></li><li><a href="#">Modeling</a></li><li><a href="#kanban">Kanban</a></li><li><a href="#">WIP Limit</a></li><li><a href="#">Flow</a></li><li><a href="#crystal">Crystal</a></li><li><a href="#">Adaptive</a></li><li><a href="#">People-centric</a></li><li><a href="#msf">MSF</a></li><li><a href="#">Governance</a></li><li><a href="#">Risk Mgmt</a></li><li><a href="#">CI/CD</a></li><li><a href="#">DevOps</a></li><li><a href="#">Agile</a></li><li><a href="#">Scrum</a></li><li><a href="#">Lean</a></li><li><a href="#">Velocity</a></li><li><a href="#">Backlog</a></li><li><a href="#">Sprint</a></li><li><a href="#">User Story</a></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section reveal" id="xp"><div class="grid"><article class="card" style="grid-column: span 12;"><div class="inner"><div class="badge">Metodologia</div><h2>XP — eXtreme Programming</h2><p>XP é uma metodologia ágil focada principalmente em práticas de engenharia de software para aumentar qualidade e resposta a mudanças. Valoriza comunicação, simplicidade, feedback e coragem.</p><div class="columns"><div><h3>Componentes humanos</h3><ul class="list"><li>Cliente on-site (representante do negócio)</li><li>Desenvolvedores</li><li>Coach/Facilitador</li><li>Tracker (acompanha métricas)</li><li>Tester/QA integrado à equipe</li></ul></div><div><h3>Fases/Fluxo</h3><div class="timeline"><div class="time-item"><strong>Planejamento de release</strong> — definição de user stories e prioridades.</div><div class="time-item"><strong>Iterações curtas</strong> — 1–2 semanas, com planejamento, desenvolvimento e teste.</div><div class="time-item"><strong>Entrega contínua</strong> — releases frequentes e feedback do cliente.</div><div class="time-item"><strong>Refatoração constante</strong> — melhoria do design sem mudar comportamento.</div></div></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Alta qualidade de código e testes robustos</li><li>Feedback rápido e alinhamento com negócio</li><li>Reduz débito técnico via refatoração contínua</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Exige alta disciplina e maturidade técnica</li><li>Cliente on-site pode ser difícil de garantir</li><li>Pares e TDD podem ser percebidos como custo inicial alto</li></ul></div></div><div class="meta"><span class="pill">Melhor para: produtos com mudanças frequentes</span><span class="pill">Equipe pequena a média</span><span class="pill">Forte cultura de engenharia</span></div></div></article></div></section>
+    <section class="section reveal" id="fdd"><div class="grid"><article class="card"><div class="inner"><div class="badge">Metodologia</div><h2>FDD — Feature-Driven Development</h2><p>FDD organiza o desenvolvimento em torno de “features” (funcionalidades pequenas, de valor ao cliente), com forte ênfase em modelagem de domínio e planejamento por funcionalidades.</p><div class="columns"><div><h3>Componentes humanos</h3><ul class="list"><li>Chief Architect / Chief Programmer</li><li>Domain Experts (especialistas do negócio)</li><li>Class Owners (donos de classes)</li><li>Development Manager e Release Manager</li><li>Equipes por feature</li></ul></div><div><h3>Fases do processo</h3><ol class="list"><li>Desenvolver um modelo geral</li><li>Criar lista de features</li><li>Planejar por feature</li><li>Projetar por feature</li><li>Construir por feature</li></ol></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Boa previsibilidade e visibilidade via lista de features</li><li>Modelagem de domínio sólida</li><li>Escala bem para equipes grandes com papéis definidos</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Mais formal que outras abordagens ágeis</li><li>Curva de aprendizado em modelagem e papéis</li><li>Menos flexível para mudanças radicais de escopo</li></ul></div></div><div class="meta"><span class="pill">Melhor para: domínios complexos</span><span class="pill">Equipes médias/grandes</span><span class="pill">Necessidade de governança</span></div></div></article></div></section>
+    <section class="section reveal" id="kanban"><div class="grid"><article class="card"><div class="inner"><div class="badge">Metodologia</div><h2>Kanban</h2><p>Kanban é um método de gestão de fluxo de trabalho com foco em visualização, limitação de WIP (trabalho em progresso) e melhoria contínua. Ideal para operações contínuas e contextos de suporte.</p><div class="columns"><div><h3>Componentes humanos</h3><ul class="list"><li>Equipe multifuncional</li><li>Service Request Manager (opcional)</li><li>Coaches/Agile facilitators</li><li>Stakeholders do fluxo de valor</li></ul></div><div><h3>Fases/Fluxo</h3><div class="timeline"><div class="time-item"><strong>Visualizar o trabalho</strong> — quadro Kanban com colunas do fluxo.</div><div class="time-item"><strong>Limitar WIP</strong> — políticas explícitas para cada coluna.</div><div class="time-item"><strong>Gerenciar fluxo</strong> — medir lead time, throughput, bloqueios.</div><div class="time-item"><strong>Feedback e melhoria</strong> — cadências: replenishment, daily, review, retrospectiva.</div></div></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Alto foco em eficiência e previsibilidade</li><li>Implementação incremental sem reorganização estrutural</li><li>Transparência e redução de multitarefa</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Pode estagnar sem cultura de melhoria contínua</li><li>Nem sempre aborda engenharia técnica</li><li>Requer disciplina para políticas de WIP</li></ul></div></div><div class="meta"><span class="pill">Melhor para: fluxo contínuo, suporte e ops</span><span class="pill">Qualquer tamanho de equipe</span><span class="pill">Medições e analytics</span></div></div></article></div></section>
+    <section class="section reveal" id="crystal"><div class="grid"><article class="card"><div class="inner"><div class="badge">Metodologia</div><h2>Crystal</h2><p>Crystal é uma família de metodologias (Clear, Yellow, Orange, etc.) ajustada ao tamanho da equipe e criticidade do projeto. Valoriza comunicação, segurança pessoal e entrega frequente.</p><div class="columns"><div><h3>Componentes humanos</h3><ul class="list"><li>Equipe central de desenvolvimento</li><li>Usuários/patrocinadores</li><li>Facilitador/Coach (conforme o tamanho)</li><li>Especialistas de domínio</li></ul></div><div><h3>Fases/Práticas</h3><ul class="list"><li>Entrega frequente e incrementos</li><li>Reflexão e melhoria (workshops)</li><li>Ambiente de comunicação osmótica</li><li>Técnicas variam por cor (tamanho/criticidade)</li></ul></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Altamente adaptável ao contexto</li><li>Foco nas pessoas e comunicação</li><li>Boa para projetos com requisitos fluidos</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Menos prescritiva; pode causar inconsistência</li><li>Exige maturidade para customizar adequadamente</li><li>Documentação e governança variam por contexto</li></ul></div></div><div class="meta"><span class="pill">Melhor para: equipes pequenas a médias</span><span class="pill">Contexto variável</span><span class="pill">Ênfase humana</span></div></div></article></div></section>
+    <section class="section reveal" id="msf"><div class="grid"><article class="card"><div class="inner"><div class="badge">Metodologia</div><h2>MSF — Microsoft Solutions Framework</h2><p>MSF é um framework flexível da Microsoft que define modelos de equipe, governança e ciclos de vida, permitindo adaptar práticas a diferentes tipos de projeto e risco.</p><div class="columns"><div><h3>Componentes humanos (papéis)</h3><ul class="list"><li>Product Management</li><li>Program Management</li><li>Development</li><li>Test</li><li>User Experience</li><li>Release/Operations</li></ul></div><div><h3>Fases/Ciclo de vida</h3><ul class="list"><li>Envisioning (visão e alinhamento)</li><li>Planning (planejamento detalhado)</li><li>Developing (construção incremental)</li><li>Stabilizing (testes e hardening)</li><li>Deploying (implantação e operação)</li></ul></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Estrutura clara de papéis e responsabilidades</li><li>Integração com práticas de gestão de risco</li><li>Flexível para diferentes tipos de projeto</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Pode introduzir burocracia adicional</li><li>Dependência de ferramentas Microsoft em alguns cenários</li><li>Curva de adoção em organizações não-Microsoft</li></ul></div></div><div class="meta"><span class="pill">Melhor para: corporações e projetos regulamentados</span><span class="pill">Equipes multidisciplinares</span><span class="pill">Foco em governança</span></div></div></article></div></section>
+    <section class="section reveal" id="comparacao"><div class="grid"><article class="card"><div class="inner"><div class="badge">Comparação</div><h2>Visão geral comparativa</h2><div class="table-wrap"><table class="table" role="table"><thead><tr><th>Metodologia</th><th>Foco</th><th>Equipe</th><th>Ritmo</th><th>Quando usar</th></tr></thead><tbody><tr><td>XP</td><td>Engenharia e qualidade</td><td>Pequena–média</td><td>Iterações curtas</td><td>Produtos com mudanças frequentes</td></tr><tr><td>FDD</td><td>Modelagem e features</td><td>Média–grande</td><td>Por feature</td><td>Domínios complexos e governança</td></tr><tr><td>Kanban</td><td>Fluxo e eficiência</td><td>Qualquer</td><td>Contínuo</td><td>Suporte/ops e trabalho contínuo</td></tr><tr><td>Crystal</td><td>Pessoas e adaptação</td><td>Pequena–média</td><td>Iterativo</td><td>Contextos variáveis, requisitos fluidos</td></tr><tr><td>MSF</td><td>Governança e papéis</td><td>Média–grande</td><td>Fases</td><td>Projetos corporativos e regulados</td></tr></tbody></table></div><div class="divider"></div><p class="muted">Dica: adotem métricas como lead time, throughput, cobertura de testes e taxa de defeitos para comparar eficácia após implantação.</p></div></article></div></section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong style="font-family: Orbitron">TBL — Metodologias Ágeis | Edição Dark</strong></div>
+      <div class="muted">Interface desenvolvida para a apresentação da pesquisa de Aprendizagem Baseada em Equipe.</div>
+    </div>
+  </footer>
+
+  <div class="dock" aria-label="Ações rápidas">
+    <button id="toTop" title="Topo" aria-label="Voltar ao topo">
+      <svg id="progress-indicator" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle id="progress-bg" cx="12" cy="12" r="10" fill="none" stroke="currentColor" style="opacity:0.2"/>
+        <circle id="progress-ring" cx="12" cy="12" r="10" fill="none" transform="rotate(-90 12 12)"/>
+        <path d="M12 8l-4 4m4-4l4 4m-4-4v8"/>
+      </svg>
+    </button>
+  </div>
+  
+  <script src="https://www.goat1000.com/tagcanvas.min.js" type="text/javascript"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- EFEITOS DE INTERAÇÃO ---
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+      });
+
+      // --- NAVEGAÇÃO ATIVA E REVEAL ON SCROLL ---
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.nav a');
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.hash === `#${entry.target.id}`);
+            });
+          }
+        });
+      }, { rootMargin: '-30% 0px -70% 0px' });
+      sections.forEach(s => sectionObserver.observe(s));
+      
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .1 });
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // --- CONTROLES DO DOCK ---
+      const toTopBtn = document.getElementById('toTop');
+      const progressRing = document.getElementById('progress-ring');
+      const ringRadius = progressRing.r.baseVal.value;
+      const ringCircumference = 2 * Math.PI * ringRadius;
+      progressRing.style.strokeDasharray = `${ringCircumference} ${ringCircumference}`;
+      
+      window.addEventListener('scroll', () => {
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = window.scrollY / scrollHeight;
+        const offset = ringCircumference - (scrollPercent * ringCircumference);
+        progressRing.style.strokeDashoffset = isNaN(offset) ? ringCircumference : offset;
+      }, { passive: true });
+
+      toTopBtn.addEventListener('click', () => window.scrollTo({top: 0}));
+
+      // --- ANIMAÇÃO DE FUNDO "CONSTELAÇÃO" ---
+      const canvas = document.getElementById('constellation');
+      const ctx = canvas.getContext('2d');
+      let particles, W, H;
+      const mouse = { x: undefined, y: undefined, radius: 100 };
+
+      const resize = () => {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        initParticles();
+      };
+      window.addEventListener('resize', resize);
+      canvas.addEventListener('mousemove', e => {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
+      });
+      canvas.addEventListener('mouseleave', () => {
+          mouse.x = undefined;
+          mouse.y = undefined;
+      });
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * W; this.y = Math.random() * H;
+          this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5;
+          this.size = Math.random() * 1.5 + 1;
+        }
+        update() {
+          this.x += this.vx; this.y += this.vy;
+          if (this.x < 0 || this.x > W) this.vx *= -1;
+          if (this.y < 0 || this.y > H) this.vy *= -1;
+        }
+        draw(ctx, particleColor) {
+          ctx.fillStyle = particleColor;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        particles = [];
+        let numParticles = (W * H) / 9000;
+        for (let i = 0; i < numParticles; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function connectParticles(ctx, lineColor) {
+        let maxDist = 120;
+        for (let a = 0; a < particles.length; a++) {
+          for (let b = a; b < particles.length; b++) {
+            let dx = particles[a].x - particles[b].x;
+            let dy = particles[a].y - particles[b].y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDist) {
+              ctx.strokeStyle = `rgba(${lineColor}, ${1 - dist / maxDist})`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(particles[a].x, particles[a].y);
+              ctx.lineTo(particles[b].x, particles[b].y);
+              ctx.stroke();
+            }
+          }
+          if (mouse.x !== undefined) {
+            let dx = particles[a].x - mouse.x;
+            let dy = particles[a].y - mouse.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              ctx.strokeStyle = `rgba(${lineColor}, ${1 - dist / mouse.radius})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(particles[a].x, particles[a].y);
+              ctx.lineTo(mouse.x, mouse.y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, W, H);
+        const particleColor = '#FFFFFF';
+        const lineColor = '255,255,255';
+
+        particles.forEach(p => {
+          p.update();
+          p.draw(ctx, particleColor);
+        });
+        connectParticles(ctx, lineColor);
+        requestAnimationFrame(animate);
+      }
+      resize();
+      animate();
+
+      // --- TAG CANVAS 3D ---
+      try {
+        TagCanvas.Start('tagCanvas', 'tags', {
+          textColour: '#FFFFFF',
+          outlineColour: 'transparent',
+          reverse: true,
+          depth: 0.8,
+          maxSpeed: 0.05,
+          weight: true,
+          initial: [0.05, -0.05],
+          noSelect: true,
+          textHeight: 16
+        });
+      } catch(e) {
+        document.getElementById('tagCanvas').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
