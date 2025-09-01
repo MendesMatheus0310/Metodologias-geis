@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Metodologias Ágeis — Edição Dark</title>
-  <meta name="description" content="A pesquisa definitiva sobre metodologias ágeis em uma interface futurista com modo escuro permanente." />
+  <meta name="description" content="Pesquisa prática sobre metodologias ágeis em uma interface escura, clara e direta." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -242,7 +242,7 @@
   <div class="bg-layer"></div>
 
   <header>
-    <nav class="nav">
+    <nav class="nav" aria-label="Navegação principal">
       <a class="brand" href="#top"><div class="logo" aria-hidden="true"></div><span class="title">TBL — Metodologias Ágeis</span></a>
       <ul>
         <li><a href="#xp">XP</a></li><li><a href="#fdd">FDD</a></li><li><a href="#kanban">Kanban</a></li><li><a href="#crystal">Crystal</a></li><li><a href="#msf">MSF</a></li><li><a href="#comparacao">Comparação</a></li>
@@ -254,50 +254,364 @@
     <div class="hero-inner">
       <div class="hero-content">
         <div class="kicker">Aprendizagem Baseada em Equipe</div>
-        <h1>Explorando Metodologias Ágeis</h1>
-        <p class="sub">Uma pesquisa imersiva e interativa sobre XP, FDD, Kanban, Crystal e MSF, analisando seus processos, pessoas, vantagens e desvantagens.</p>
-        <div class="cta-row"><a href="#xp" class="btn primary">Iniciar Exploração</a><a href="#comparacao" class="btn ghost">Comparação Rápida</a></div>
-        <div class="stats"><div class="stat"><strong>5</strong><span>Metodologias</span></div><div class="stat"><strong>4</strong><span>Dimensões</span></div><div class="stat"><strong>1</strong><span>Interface</span></div></div>
+        <h1>Metodologias Ágeis, na prática</h1>
+        <p class="sub">Um guia direto sobre XP, FDD, Kanban, Crystal e MSF: como funcionam, quem participa, prós e contras. Sem rodeios.</p>
+        <div class="cta-row"><a href="#xp" class="btn primary">Começar</a><a href="#comparacao" class="btn ghost">Ver comparação</a></div>
+        <div class="stats">
+          <div class="stat"><strong>5</strong><span>Metodologias</span></div>
+          <div class="stat"><strong>4</strong><span>Dimensões</span></div>
+          <div class="stat"><strong>1</strong><span>Visão clara</span></div>
+        </div>
       </div>
-      <div class="tag-canvas-container">
+      <div class="tag-canvas-container" aria-hidden="true">
         <canvas width="500" height="500" id="tagCanvas"><p>Seu navegador não suporta a tag canvas.</p></canvas>
         <div id="tags" style="display:none;">
-          <ul><li><a href="#xp">XP</a></li><li><a href="#">TDD</a></li><li><a href="#">Pair Programming</a></li><li><a href="#fdd">FDD</a></li><li><a href="#">Features</a></li><li><a href="#">Modeling</a></li><li><a href="#kanban">Kanban</a></li><li><a href="#">WIP Limit</a></li><li><a href="#">Flow</a></li><li><a href="#crystal">Crystal</a></li><li><a href="#">Adaptive</a></li><li><a href="#">People-centric</a></li><li><a href="#msf">MSF</a></li><li><a href="#">Governance</a></li><li><a href="#">Risk Mgmt</a></li><li><a href="#">CI/CD</a></li><li><a href="#">DevOps</a></li><li><a href="#">Agile</a></li><li><a href="#">Scrum</a></li><li><a href="#">Lean</a></li><li><a href="#">Velocity</a></li><li><a href="#">Backlog</a></li><li><a href="#">Sprint</a></li><li><a href="#">User Story</a></li></ul>
+          <ul>
+            <li><a href="#xp">XP</a></li><li><a href="#">TDD</a></li><li><a href="#">Pair Programming</a></li>
+            <li><a href="#fdd">FDD</a></li><li><a href="#">Features</a></li><li><a href="#">Modelagem</a></li>
+            <li><a href="#kanban">Kanban</a></li><li><a href="#">WIP</a></li><li><a href="#">Fluxo</a></li>
+            <li><a href="#crystal">Crystal</a></li><li><a href="#">Adaptativo</a></li><li><a href="#">Pessoas</a></li>
+            <li><a href="#msf">MSF</a></li><li><a href="#">Governança</a></li><li><a href="#">Risco</a></li>
+            <li><a href="#">CI/CD</a></li><li><a href="#">DevOps</a></li><li><a href="#">Agile</a></li>
+            <li><a href="#">Scrum</a></li><li><a href="#">Lean</a></li><li><a href="#">Velocidade</a></li>
+            <li><a href="#">Backlog</a></li><li><a href="#">Sprint</a></li><li><a href="#">User Story</a></li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <main>
-    <section class="section reveal" id="xp"><div class="grid"><article class="card" style="grid-column: span 12;"><div class="inner"><div class="badge">Metodologia</div><h2>XP — eXtreme Programming</h2><p>XP é uma metodologia ágil focada principalmente em práticas de engenharia de software para aumentar qualidade e resposta a mudanças. Valoriza comunicação, simplicidade, feedback e coragem.</p><div class="columns"><div><h3>Componentes humanos</h3><ul class="list"><li>Cliente on-site (representante do negócio)</li><li>Desenvolvedores</li><li>Coach/Facilitador</li><li>Tracker (acompanha métricas)</li><li>Tester/QA integrado à equipe</li></ul></div><div><h3>Fases/Fluxo</h3><div class="timeline"><div class="time-item"><strong>Planejamento de release</strong> — definição de user stories e prioridades.</div><div class="time-item"><strong>Iterações curtas</strong> — 1–2 semanas, com planejamento, desenvolvimento e teste.</div><div class="time-item"><strong>Entrega contínua</strong> — releases frequentes e feedback do cliente.</div><div class="time-item"><strong>Refatoração constante</strong> — melhoria do design sem mudar comportamento.</div></div></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Alta qualidade de código e testes robustos</li><li>Feedback rápido e alinhamento com negócio</li><li>Reduz débito técnico via refatoração contínua</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Exige alta disciplina e maturidade técnica</li><li>Cliente on-site pode ser difícil de garantir</li><li>Pares e TDD podem ser percebidos como custo inicial alto</li></ul></div></div><div class="meta"><span class="pill">Melhor para: produtos com mudanças frequentes</span><span class="pill">Equipe pequena a média</span><span class="pill">Forte cultura de engenharia</span></div></div></article></div></section>
-    <section class="section reveal" id="fdd"><div class="grid"><article class="card"><div class="inner"><div class="badge">Metodologia</div><h2>FDD — Feature-Driven Development</h2><p>FDD organiza o desenvolvimento em torno de “features” (funcionalidades pequenas, de valor ao cliente), com forte ênfase em modelagem de domínio e planejamento por funcionalidades.</p><div class="columns"><div><h3>Componentes humanos</h3><ul class="list"><li>Chief Architect / Chief Programmer</li><li>Domain Experts (especialistas do negócio)</li><li>Class Owners (donos de classes)</li><li>Development Manager e Release Manager</li><li>Equipes por feature</li></ul></div><div><h3>Fases do processo</h3><ol class="list"><li>Desenvolver um modelo geral</li><li>Criar lista de features</li><li>Planejar por feature</li><li>Projetar por feature</li><li>Construir por feature</li></ol></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Boa previsibilidade e visibilidade via lista de features</li><li>Modelagem de domínio sólida</li><li>Escala bem para equipes grandes com papéis definidos</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Mais formal que outras abordagens ágeis</li><li>Curva de aprendizado em modelagem e papéis</li><li>Menos flexível para mudanças radicais de escopo</li></ul></div></div><div class="meta"><span class="pill">Melhor para: domínios complexos</span><span class="pill">Equipes médias/grandes</span><span class="pill">Necessidade de governança</span></div></div></article></div></section>
-    <section class="section reveal" id="kanban"><div class="grid"><article class="card"><div class="inner"><div class="badge">Metodologia</div><h2>Kanban</h2><p>Kanban é um método de gestão de fluxo de trabalho com foco em visualização, limitação de WIP (trabalho em progresso) e melhoria contínua. Ideal para operações contínuas e contextos de suporte.</p><div class="columns"><div><h3>Componentes humanos</h3><ul class="list"><li>Equipe multifuncional</li><li>Service Request Manager (opcional)</li><li>Coaches/Agile facilitators</li><li>Stakeholders do fluxo de valor</li></ul></div><div><h3>Fases/Fluxo</h3><div class="timeline"><div class="time-item"><strong>Visualizar o trabalho</strong> — quadro Kanban com colunas do fluxo.</div><div class="time-item"><strong>Limitar WIP</strong> — políticas explícitas para cada coluna.</div><div class="time-item"><strong>Gerenciar fluxo</strong> — medir lead time, throughput, bloqueios.</div><div class="time-item"><strong>Feedback e melhoria</strong> — cadências: replenishment, daily, review, retrospectiva.</div></div></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Alto foco em eficiência e previsibilidade</li><li>Implementação incremental sem reorganização estrutural</li><li>Transparência e redução de multitarefa</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Pode estagnar sem cultura de melhoria contínua</li><li>Nem sempre aborda engenharia técnica</li><li>Requer disciplina para políticas de WIP</li></ul></div></div><div class="meta"><span class="pill">Melhor para: fluxo contínuo, suporte e ops</span><span class="pill">Qualquer tamanho de equipe</span><span class="pill">Medições e analytics</span></div></div></article></div></section>
-    <section class="section reveal" id="crystal"><div class="grid"><article class="card"><div class="inner"><div class="badge">Metodologia</div><h2>Crystal</h2><p>Crystal é uma família de metodologias (Clear, Yellow, Orange, etc.) ajustada ao tamanho da equipe e criticidade do projeto. Valoriza comunicação, segurança pessoal e entrega frequente.</p><div class="columns"><div><h3>Componentes humanos</h3><ul class="list"><li>Equipe central de desenvolvimento</li><li>Usuários/patrocinadores</li><li>Facilitador/Coach (conforme o tamanho)</li><li>Especialistas de domínio</li></ul></div><div><h3>Fases/Práticas</h3><ul class="list"><li>Entrega frequente e incrementos</li><li>Reflexão e melhoria (workshops)</li><li>Ambiente de comunicação osmótica</li><li>Técnicas variam por cor (tamanho/criticidade)</li></ul></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Altamente adaptável ao contexto</li><li>Foco nas pessoas e comunicação</li><li>Boa para projetos com requisitos fluidos</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Menos prescritiva; pode causar inconsistência</li><li>Exige maturidade para customizar adequadamente</li><li>Documentação e governança variam por contexto</li></ul></div></div><div class="meta"><span class="pill">Melhor para: equipes pequenas a médias</span><span class="pill">Contexto variável</span><span class="pill">Ênfase humana</span></div></div></article></div></section>
-    <section class="section reveal" id="msf"><div class="grid"><article class="card"><div class="inner"><div class="badge">Metodologia</div><h2>MSF — Microsoft Solutions Framework</h2><p>MSF é um framework flexível da Microsoft que define modelos de equipe, governança e ciclos de vida, permitindo adaptar práticas a diferentes tipos de projeto e risco.</p><div class="columns"><div><h3>Componentes humanos (papéis)</h3><ul class="list"><li>Product Management</li><li>Program Management</li><li>Development</li><li>Test</li><li>User Experience</li><li>Release/Operations</li></ul></div><div><h3>Fases/Ciclo de vida</h3><ul class="list"><li>Envisioning (visão e alinhamento)</li><li>Planning (planejamento detalhado)</li><li>Developing (construção incremental)</li><li>Stabilizing (testes e hardening)</li><li>Deploying (implantação e operação)</li></ul></div></div><div class="columns"><div><h3>Vantagens</h3><ul class="list"><li>Estrutura clara de papéis e responsabilidades</li><li>Integração com práticas de gestão de risco</li><li>Flexível para diferentes tipos de projeto</li></ul></div><div><h3>Desvantagens</h3><ul class="list"><li>Pode introduzir burocracia adicional</li><li>Dependência de ferramentas Microsoft em alguns cenários</li><li>Curva de adoção em organizações não-Microsoft</li></ul></div></div><div class="meta"><span class="pill">Melhor para: corporações e projetos regulamentados</span><span class="pill">Equipes multidisciplinares</span><span class="pill">Foco em governança</span></div></div></article></div></section>
-    <section class="section reveal" id="comparacao"><div class="grid"><article class="card"><div class="inner"><div class="badge">Comparação</div><h2>Visão geral comparativa</h2><div class="table-wrap"><table class="table" role="table"><thead><tr><th>Metodologia</th><th>Foco</th><th>Equipe</th><th>Ritmo</th><th>Quando usar</th></tr></thead><tbody><tr><td>XP</td><td>Engenharia e qualidade</td><td>Pequena–média</td><td>Iterações curtas</td><td>Produtos com mudanças frequentes</td></tr><tr><td>FDD</td><td>Modelagem e features</td><td>Média–grande</td><td>Por feature</td><td>Domínios complexos e governança</td></tr><tr><td>Kanban</td><td>Fluxo e eficiência</td><td>Qualquer</td><td>Contínuo</td><td>Suporte/ops e trabalho contínuo</td></tr><tr><td>Crystal</td><td>Pessoas e adaptação</td><td>Pequena–média</td><td>Iterativo</td><td>Contextos variáveis, requisitos fluidos</td></tr><tr><td>MSF</td><td>Governança e papéis</td><td>Média–grande</td><td>Fases</td><td>Projetos corporativos e regulados</td></tr></tbody></table></div><div class="divider"></div><p class="muted">Dica: adotem métricas como lead time, throughput, cobertura de testes e taxa de defeitos para comparar eficácia após implantação.</p></div></article></div></section>
+    <section class="section reveal" id="xp">
+      <div class="grid">
+        <article class="card" style="grid-column: span 12;">
+          <div class="inner">
+            <div class="badge">Metodologia</div>
+            <h2>XP — eXtreme Programming</h2>
+            <p>Foco em práticas de engenharia para manter qualidade alta e reagir rápido a mudanças. Baseado em comunicação, simplicidade, feedback e coragem.</p>
+            <div class="columns">
+              <div>
+                <h3>Pessoas envolvidas</h3>
+                <ul class="list">
+                  <li>Representante do cliente (no time)</li>
+                  <li>Desenvolvedores</li>
+                  <li>Coach/Facilitador</li>
+                  <li>Tracker (métricas)</li>
+                  <li>Tester/QA integrado</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Como funciona</h3>
+                <div class="timeline">
+                  <div class="time-item"><strong>Planejamento de release</strong> — definir histórias e prioridades.</div>
+                  <div class="time-item"><strong>Iterações curtas</strong> — 1 a 2 semanas, com planejamento, desenvolvimento e testes.</div>
+                  <div class="time-item"><strong>Entrega contínua</strong> — releases frequentes e feedback real.</div>
+                  <div class="time-item"><strong>Refatoração</strong> — melhorar o design sem mudar o comportamento.</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div>
+                <h3>Vantagens</h3>
+                <ul class="list">
+                  <li>Código com testes fortes e qualidade consistente</li>
+                  <li>Feedback rápido e alinhamento com o negócio</li>
+                  <li>Menos débito técnico ao longo do tempo</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Limites</h3>
+                <ul class="list">
+                  <li>Precisa de disciplina e maturidade técnica</li>
+                  <li>Cliente disponível no dia a dia nem sempre é viável</li>
+                  <li>Pair programming e TDD exigem investimento inicial</li>
+                </ul>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Bom para: mudanças frequentes</span>
+              <span class="pill">Times pequenos a médios</span>
+              <span class="pill">Cultura forte de engenharia</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="fdd">
+      <div class="grid">
+        <article class="card">
+          <div class="inner">
+            <div class="badge">Metodologia</div>
+            <h2>FDD — Feature-Driven Development</h2>
+            <p>Organiza o trabalho por funcionalidades pequenas de valor ao cliente, com ênfase em modelagem de domínio e planejamento objetivo.</p>
+            <div class="columns">
+              <div>
+                <h3>Pessoas envolvidas</h3>
+                <ul class="list">
+                  <li>Chief Architect / Chief Programmer</li>
+                  <li>Especialistas de domínio</li>
+                  <li>Class Owners (donos de classes)</li>
+                  <li>Development/Release Manager</li>
+                  <li>Equipes por feature</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Passo a passo</h3>
+                <ol class="list">
+                  <li>Modelar o domínio (visão geral)</li>
+                  <li>Listar as features</li>
+                  <li>Planejar por feature</li>
+                  <li>Projetar por feature</li>
+                  <li>Construir por feature</li>
+                </ol>
+              </div>
+            </div>
+            <div class="columns">
+              <div>
+                <h3>Vantagens</h3>
+                <ul class="list">
+                  <li>Boa previsibilidade via lista de features</li>
+                  <li>Modelagem sólida do domínio</li>
+                  <li>Funciona bem com times grandes e papéis claros</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Limites</h3>
+                <ul class="list">
+                  <li>Mais formal que outras abordagens</li>
+                  <li>Curva de aprendizado em papéis e modelagem</li>
+                  <li>Menos flexível para mudanças bruscas</li>
+                </ul>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Bom para: domínios complexos</span>
+              <span class="pill">Times médios/grandes</span>
+              <span class="pill">Necessidade de governança</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="kanban">
+      <div class="grid">
+        <article class="card">
+          <div class="inner">
+            <div class="badge">Metodologia</div>
+            <h2>Kanban</h2>
+            <p>Gerencia o fluxo de trabalho com visualização clara, limites de WIP e melhoria contínua. Ótimo para operação contínua e suporte.</p>
+            <div class="columns">
+              <div>
+                <h3>Pessoas envolvidas</h3>
+                <ul class="list">
+                  <li>Equipe multifuncional</li>
+                  <li>Service Request Manager (opcional)</li>
+                  <li>Facilitadores/Agile Coaches</li>
+                  <li>Stakeholders do fluxo de valor</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Como funciona</h3>
+                <div class="timeline">
+                  <div class="time-item"><strong>Visualizar o trabalho</strong> — quadro com as etapas do fluxo.</div>
+                  <div class="time-item"><strong>Limitar WIP</strong> — políticas explícitas por coluna.</div>
+                  <div class="time-item"><strong>Gerenciar o fluxo</strong> — medir lead time, throughput e bloqueios.</div>
+                  <div class="time-item"><strong>Rotina de melhoria</strong> — cadências de reabastecimento, dailies, review e retro.</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div>
+                <h3>Vantagens</h3>
+                <ul class="list">
+                  <li>Mais eficiência e previsibilidade</li>
+                  <li>Adoção incremental, sem grandes mudanças</li>
+                  <li>Transparência e menos multitarefa</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Limites</h3>
+                <ul class="list">
+                  <li>Pode estagnar sem foco em melhoria</li>
+                  <li>Não cobre práticas técnicas de engenharia</li>
+                  <li>Exige disciplina nos limites de WIP</li>
+                </ul>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Bom para: fluxo contínuo, suporte e ops</span>
+              <span class="pill">Qualquer tamanho de time</span>
+              <span class="pill">Medição e análise</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="crystal">
+      <div class="grid">
+        <article class="card">
+          <div class="inner">
+            <div class="badge">Metodologia</div>
+            <h2>Crystal</h2>
+            <p>Conjunto de métodos (Clear, Yellow, Orange, etc.) ajustado ao tamanho do time e à criticidade do projeto. Valoriza comunicação e entregas frequentes.</p>
+            <div class="columns">
+              <div>
+                <h3>Pessoas envolvidas</h3>
+                <ul class="list">
+                  <li>Time de desenvolvimento</li>
+                  <li>Usuários e patrocinadores</li>
+                  <li>Facilitador/Coach (conforme o porte)</li>
+                  <li>Especialistas de domínio</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Práticas comuns</h3>
+                <ul class="list">
+                  <li>Entregas frequentes</li>
+                  <li>Revisão e melhoria recorrente</li>
+                  <li>Ambiente com comunicação fluida</li>
+                  <li>Técnicas variam conforme a “cor” (porte/risco)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="columns">
+              <div>
+                <h3>Vantagens</h3>
+                <ul class="list">
+                  <li>Alta adaptação ao contexto</li>
+                  <li>Foco nas pessoas e na comunicação</li>
+                  <li>Bom para requisitos que mudam</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Limites</h3>
+                <ul class="list">
+                  <li>Pouco prescritivo; pode gerar variação de práticas</li>
+                  <li>Requer maturidade para customizar</li>
+                  <li>Governança e documentação variam bastante</li>
+                </ul>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Bom para: times pequenos a médios</span>
+              <span class="pill">Contexto variável</span>
+              <span class="pill">Ênfase nas pessoas</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="msf">
+      <div class="grid">
+        <article class="card">
+          <div class="inner">
+            <div class="badge">Metodologia</div>
+            <h2>MSF — Microsoft Solutions Framework</h2>
+            <p>Framework flexível com modelos de equipe, governança e ciclos de vida. Ajuda a ajustar práticas para tipos de projeto e riscos diferentes.</p>
+            <div class="columns">
+              <div>
+                <h3>Papéis</h3>
+                <ul class="list">
+                  <li>Product Management</li>
+                  <li>Program Management</li>
+                  <li>Development</li>
+                  <li>Test</li>
+                  <li>User Experience</li>
+                  <li>Release/Operations</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Ciclo de vida</h3>
+                <ul class="list">
+                  <li>Envisioning (visão)</li>
+                  <li>Planning (planejamento)</li>
+                  <li>Developing (construção)</li>
+                  <li>Stabilizing (teste/hardening)</li>
+                  <li>Deploying (implantação/operação)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="columns">
+              <div>
+                <h3>Vantagens</h3>
+                <ul class="list">
+                  <li>Papéis e responsabilidades bem definidos</li>
+                  <li>Boa integração com gestão de riscos</li>
+                  <li>Adaptável a diferentes projetos</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Limites</h3>
+                <ul class="list">
+                  <li>Pode trazer burocracia extra</li>
+                  <li>Dependência de ferramentas Microsoft em alguns casos</li>
+                  <li>Adoção mais lenta fora do ecossistema MS</li>
+                </ul>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Bom para: corporações e ambientes regulados</span>
+              <span class="pill">Times multidisciplinares</span>
+              <span class="pill">Foco em governança</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="comparacao">
+      <div class="grid">
+        <article class="card">
+          <div class="inner">
+            <div class="badge">Comparação</div>
+            <h2>Visão geral</h2>
+            <div class="table-wrap">
+              <table class="table" role="table">
+                <thead>
+                  <tr><th>Metodologia</th><th>Foco</th><th>Equipe</th><th>Ritmo</th><th>Quando usar</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>XP</td><td>Engenharia e qualidade</td><td>Pequena–média</td><td>Iterações curtas</td><td>Mudanças frequentes</td></tr>
+                  <tr><td>FDD</td><td>Modelagem e features</td><td>Média–grande</td><td>Por feature</td><td>Domínios complexos</td></tr>
+                  <tr><td>Kanban</td><td>Fluxo e eficiência</td><td>Qualquer</td><td>Contínuo</td><td>Suporte/ops e trabalho contínuo</td></tr>
+                  <tr><td>Crystal</td><td>Pessoas e adaptação</td><td>Pequena–média</td><td>Iterativo</td><td>Contextos variáveis</td></tr>
+                  <tr><td>MSF</td><td>Governança e papéis</td><td>Média–grande</td><td>Fases</td><td>Projetos corporativos</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="divider"></div>
+            <p class="muted">Dica: acompanhe lead time, throughput, cobertura de testes e taxa de defeitos para avaliar resultados após a adoção.</p>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="footer-inner">
-      <div><strong style="font-family: Orbitron">TBL — Metodologias Ágeis | Edição Dark</strong></div>
-      <div class="muted">Interface desenvolvida para a apresentação da pesquisa de Aprendizagem Baseada em Equipe.</div>
+      <div><strong style="font-family: Orbitron">Matheus Mendes RA:60006105, Kaliu RA:60010129, Gabriel Foscarini RA:60008405</strong></div>
+      <div class="muted">Interface criada para a pesquisa de Aprendizagem Baseada em Equipe.</div>
     </div>
   </footer>
 
   <div class="dock" aria-label="Ações rápidas">
-    <button id="toTop" title="Topo" aria-label="Voltar ao topo">
-      <svg id="progress-indicator" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button id="toTop" title="Voltar ao topo" aria-label="Voltar ao topo">
+      <svg id="progress-indicator" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle id="progress-bg" cx="12" cy="12" r="10" fill="none" stroke="currentColor" style="opacity:0.2"/>
         <circle id="progress-ring" cx="12" cy="12" r="10" fill="none" transform="rotate(-90 12 12)"/>
         <path d="M12 8l-4 4m4-4l4 4m-4-4v8"/>
       </svg>
     </button>
   </div>
-  
+
   <script src="https://www.goat1000.com/tagcanvas.min.js" type="text/javascript"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // --- EFEITOS DE INTERAÇÃO ---
+      // Interações com o mouse nos cards
       document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('mousemove', e => {
           const rect = card.getBoundingClientRect();
@@ -306,7 +620,7 @@
         });
       });
 
-      // --- NAVEGAÇÃO ATIVA E REVEAL ON SCROLL ---
+      // Navegação ativa e animação ao rolar
       const sections = document.querySelectorAll('.section');
       const navLinks = document.querySelectorAll('.nav a');
       const revealElements = document.querySelectorAll('.reveal');
@@ -321,7 +635,7 @@
         });
       }, { rootMargin: '-30% 0px -70% 0px' });
       sections.forEach(s => sectionObserver.observe(s));
-      
+
       const revealObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -332,13 +646,13 @@
       }, { threshold: .1 });
       revealElements.forEach(el => revealObserver.observe(el));
 
-      // --- CONTROLES DO DOCK ---
+      // Botão de voltar ao topo com indicador de progresso
       const toTopBtn = document.getElementById('toTop');
       const progressRing = document.getElementById('progress-ring');
       const ringRadius = progressRing.r.baseVal.value;
       const ringCircumference = 2 * Math.PI * ringRadius;
       progressRing.style.strokeDasharray = `${ringCircumference} ${ringCircumference}`;
-      
+
       window.addEventListener('scroll', () => {
         const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrollPercent = window.scrollY / scrollHeight;
@@ -348,7 +662,7 @@
 
       toTopBtn.addEventListener('click', () => window.scrollTo({top: 0}));
 
-      // --- ANIMAÇÃO DE FUNDO "CONSTELAÇÃO" ---
+      // Animação de fundo (constelação)
       const canvas = document.getElementById('constellation');
       const ctx = canvas.getContext('2d');
       let particles, W, H;
@@ -396,7 +710,7 @@
         }
       }
 
-      function connectParticles(ctx, lineColor) {
+      function connectParticles(ctx, lineRGB) {
         let maxDist = 120;
         for (let a = 0; a < particles.length; a++) {
           for (let b = a; b < particles.length; b++) {
@@ -404,7 +718,7 @@
             let dy = particles[a].y - particles[b].y;
             let dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < maxDist) {
-              ctx.strokeStyle = `rgba(${lineColor}, ${1 - dist / maxDist})`;
+              ctx.strokeStyle = `rgba(${lineRGB}, ${1 - dist / maxDist})`;
               ctx.lineWidth = 0.5;
               ctx.beginPath();
               ctx.moveTo(particles[a].x, particles[a].y);
@@ -417,7 +731,7 @@
             let dy = particles[a].y - mouse.y;
             let dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < mouse.radius) {
-              ctx.strokeStyle = `rgba(${lineColor}, ${1 - dist / mouse.radius})`;
+              ctx.strokeStyle = `rgba(${lineRGB}, ${1 - dist / mouse.radius})`;
               ctx.lineWidth = 1;
               ctx.beginPath();
               ctx.moveTo(particles[a].x, particles[a].y);
@@ -431,19 +745,19 @@
       function animate() {
         ctx.clearRect(0, 0, W, H);
         const particleColor = '#FFFFFF';
-        const lineColor = '255,255,255';
+        const lineRGB = '255,255,255';
 
         particles.forEach(p => {
           p.update();
           p.draw(ctx, particleColor);
         });
-        connectParticles(ctx, lineColor);
+        connectParticles(ctx, lineRGB);
         requestAnimationFrame(animate);
       }
       resize();
       animate();
 
-      // --- TAG CANVAS 3D ---
+      // Nuvem de tags 3D
       try {
         TagCanvas.Start('tagCanvas', 'tags', {
           textColour: '#FFFFFF',
